@@ -1,30 +1,24 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { Route } from 'react-router-dom';
+import PageLoader from 'components/PageLoader';
 
-import DefaultButton from 'components/DefaultButton';
-import logo from './logo.svg';
+import MyErrorBoundary from './ErrorBoundary';
 
-import './App.css';
+const Login = React.lazy(() => import('containers/Login'));
+const Dashboard = React.lazy(() => import('containers/Dashboard'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <MyErrorBoundary>
+        <Suspense fallback={<PageLoader />}>
+          <Route path="/" exact component={Login} />
 
-        <DefaultButton text="tes" />
-      </header>
-    </div>
+          <Route path="/login" component={Login} />
+          <Route path="/dashboard" component={Dashboard} />
+        </Suspense>
+      </MyErrorBoundary>
+    </>
   );
 }
 
