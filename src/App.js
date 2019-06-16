@@ -1,5 +1,8 @@
 import React from 'react';
+
+import DefaultButton from 'components/DefaultButton';
 import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
@@ -18,6 +21,8 @@ function App() {
         >
           Learn React
         </a>
+
+        <DefaultButton text="tes" />
       </header>
     </div>
   );
