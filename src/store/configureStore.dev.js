@@ -14,6 +14,7 @@ const configureStore = initialStates => {
       DevTools.instrument()
     )
   );
+  console.log(module.hot, 'test');
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

@@ -15,8 +15,6 @@ function InputText({
   type,
   placeholder
 }) {
-  console.log(size, 'size');
-
   return (
     <FormItem
       {...layout}
